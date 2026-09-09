@@ -1,0 +1,129 @@
+:root {
+  --bg-color: #f0f4f8;
+  --card-bg: #ffffff;
+  --text-color: #1a2b3c;
+  --primary-color: #0077b6;
+  --success-color: #2ec4b6;
+  --danger-color: #e63946;
+  --border-color: #d8e2dc;
+}
+
+[data-theme="dark"] {
+  --bg-color: #0b131f;
+  --card-bg: #152232;
+  --text-color: #e0f1ff;
+  --border-color: #26384d;
+}
+
+body {
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 20px;
+  transition: 0.3s;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-top: -8px;
+}
+
+.card {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.form-group, .dna-form, .controls-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+input, select, button {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background: var(--card-bg);
+  color: var(--text-color);
+  flex: 1;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-secondary {
+  cursor: pointer;
+}
+
+.dna-result {
+  margin-top: 10px;
+  padding: 10px;
+  background: rgba(0, 119, 182, 0.1);
+  border-radius: 6px;
+  font-family: monospace;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge.success { background: var(--success-color); color: white; }
+.badge.danger { background: var(--danger-color); color: white; }
+
+.delete-btn {
+  background: var(--danger-color);
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.filter-btn { cursor: pointer; }
+.filter-btn.active {
+  background-color: var(--primary-color);
+  color: white;
+}

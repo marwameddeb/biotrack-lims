@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BioTrack LIMS - Traçabilité Biopharmaceutique</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>🧬 BioTrack LIMS</h1>
+        <p class="subtitle">Gestion des Lots Biopharmaceutiques & Contrôle Qualité</p>
+      </div>
+      <button id="theme-toggle" class="btn-secondary">🌙 Mode Sombre</button>
+    </header>
+
+    <!-- Module Biotech: Séquençage ADN -->
+    <section class="card biotech-tool">
+      <h2>🔬 Module ADN : Expression Protéique</h2>
+      <div class="dna-form">
+        <input type="text" id="dna-input" placeholder="Entrez la séquence ADN (ex: ATGCGATGA)" uppercase>
+        <button id="btn-translate" class="btn-primary">Traduire ADN → Protéine</button>
+      </div>
+      <div id="dna-output" class="dna-result"></div>
+    </section>
+
+    <!-- Formulaire d'enregistrement de lot biopharmaceutique -->
+    <section class="card">
+      <h2>📋 Enregistrer un Lot de Production</h2>
+      <form id="batch-form">
+        <div class="form-group">
+          <input type="text" id="batch-code" placeholder="Code du Lot (ex: LOT-2026-A1)" required>
+          <input type="text" id="drug-name" placeholder="Biomédicament (ex: Anti-TNF alpha)" required>
+        </div>
+        <div class="form-group">
+          <input type="number" id="temp-val" step="0.1" placeholder="Température (°C) [36.5 - 37.5]" required>
+          <input type="number" id="ph-val" step="0.1" placeholder="pH [6.8 - 7.4]" required>
+          <select id="stage-select">
+            <option value="Culture Cellulaire">Culture Cellulaire</option>
+            <option value="Purification">Purification</option>
+            <option value="Formulation">Formulation</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-primary">Valider & Enregistrer le Lot</button>
+      </form>
+    </section>
+
+    <!-- Contrôles et Filtres -->
+    <section class="controls-section">
+      <input type="text" id="search-batch" placeholder="Rechercher un lot ou médicament...">
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">Tous</button>
+        <button class="filter-btn" data-filter="Conforme">Conformes</button>
+        <button class="filter-btn" data-filter="Non Conforme">Non Conformes</button>
+      </div>
+    </section>
+
+    <!-- Table des lots enregistrés -->
+    <main class="card">
+      <h2>📊 Registre des Lots Biopharmaceutiques</h2>
+      <table id="batch-table">
+        <thead>
+          <tr>
+            <th>Code Lot</th>
+            <th>Biomédicament</th>
+            <th>Étape</th>
+            <th>Paramètres (Temp / pH)</th>
+            <th>Statut CQ</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="batch-list"></tbody>
+      </table>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
