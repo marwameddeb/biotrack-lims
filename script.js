@@ -117,3 +117,51 @@ function toggleTheme() {
 }
 
 renderBatches();
+
+
+
+
+// Écouteur d'événement pour le bouton d'exportation
+document.getElementById('export-csv-btn').addEventListener('click', exportToCSV);
+
+function exportToCSV() {
+  if (batches.length === 0) {
+    alert("Aucune donnée de lot à exporter.");
+    return;
+  }
+
+  // Entêtes des colonnes du rapport d'audit
+  const headers = ["ID Lot", "Code Lot", "Biomédicament", "Étape de Production", "Température (°C)", "pH", "Statut CQ"];
+
+  // Formatage des lignes de données (utilisation du point-virgule comme séparateur standard Excel)
+  const rows = batches.map(batch => [
+    batch.id,
+    `"${batch.code}"`,
+    `"${batch.drug}"`,
+    `"${batch.stage}"`,
+    batch.temp,
+    batch.ph,
+    `"${batch.status}"`
+  ]);
+
+  // Construction de la chaîne CSV
+  const csvContent = [
+    headers.join(";"),
+    ...rows.map(row => row.join(";"))
+  ].join("\n");
+
+  // Création du Blob UTF-8 avec BOM (\ufeff) pour la compatibilité Excel
+  const blob = new Blob(["\ufeff" + csvContent], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+
+  // Création d'un lien de téléchargement temporaire
+  const link = document.createElement("a");
+  link.setAttribute("href", url);
+
+  const dateStr = new Date().toISOString().slice(0, 10);
+  link.setAttribute("download", `BioTrack_Rapport_Audit_Lots_${dateStr}.csv`);
+
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
