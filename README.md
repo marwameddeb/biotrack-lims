@@ -63,7 +63,7 @@ biotrack-lims/
 ├── .gitignore      # Fichiers à ignorer par Git
 └── README.md       # Documentation du projet
 ```
-
+---
 ## **🚀 Installation et Utilisation**
 **1. Cloner le dépôt :**
 
@@ -81,6 +81,7 @@ Ouvrez simplement le fichier index.html dans n'importe quel navigateur web moder
 
 - Cliquez sur « 📥 Exporter Rapport CSV » pour télécharger le fichier de rapport directement dans votre dossier de téléchargements.
 
+---
 ## **🎯 Valeur Ajoutée & Compétences Métier**
 Ce projet met en avant plusieurs compétences clés :
 
